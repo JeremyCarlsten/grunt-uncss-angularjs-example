@@ -1,0 +1,30 @@
+{
+  "name": "grunt-uncss-angular-example",
+  "version": "0.1.0",
+  "description": "Yet another amazing AngularJS app",
+  "keywords": [
+    "angular"
+  ],
+  "homepage": "https://github.com/JeremyCarlsten/grunt-uncss-angular-example",
+  "bugs": "https://github.com/JeremyCarlsten/grunt-uncss-angular-example/issues",
+  "author": {
+    "name": "Jeremy Carlsten",
+    "email": "",
+    "url": "https://github.com/JeremyCarlsten"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JeremyCarlsten/grunt-uncss-angular-example.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.0",
+    "angular-animate": "~1.2.10",
+    "angular-route": "~1.2.10",
+    "angular": "~1.2.10"
+  }
+}
