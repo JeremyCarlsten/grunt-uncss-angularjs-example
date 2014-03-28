@@ -1,31 +1,23 @@
 // Generated on 2014-03-26 using generator-angular-bootstrap 0.2.5
 'use strict';
-
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
-
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
   // Define the configuration for all the tasks
   grunt.initConfig({
-
     // Project meta
     pkg: require('./package.json'),
     bower: require('./bower.json'),
+
     meta: {
       banner: '/**\n' +
-      ' * <%= pkg.name %>\n' +
-      ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      ' * @link <%= pkg.homepage %>\n' +
-      ' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
-      ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
-      ' */\n'
+          ' * <%= pkg.name %>\n' +
+          ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+          ' * @link <%= pkg.homepage %>\n' +
+          ' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
+          ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
+          ' */\n'
     },
 
     // Project settings
@@ -34,23 +26,9 @@ module.exports = function(grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-    uncss: {
-      dist: {
-          files: {
-              'dist/css/tidy.css': ['app/index.html']
-          }
-      }
-    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      // coffee: {
-      //   files: ['<%= yo.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
-      //   tasks: ['newer:coffee:dist']
-      // },
-      coffeeTest: {
-        files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
-        tasks: ['newer:coffee:test', 'karma']
-      },
       styles: {
         files: ['<%= yo.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -109,25 +87,26 @@ module.exports = function(grunt) {
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
+        jshintrc: '.jshintrc'
       },
       all: [
-        'Gruntfile.js',
+        'Gruntfile.js'
       ]
     },
 
     // Empties folders to start fresh
     clean: {
       dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= yo.dist %>/*',
-            '!<%= yo.dist %>/.git*'
-          ]
-        }]
+        files: [
+          {
+            dot: true,
+            src: [
+              '.tmp',
+              '<%= yo.dist %>/*',
+              '!<%= yo.dist %>/.git*'
+            ]
+          }
+        ]
       },
       server: '.tmp'
     },
@@ -138,12 +117,14 @@ module.exports = function(grunt) {
         browsers: ['last 1 version']
       },
       dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '.tmp/styles/',
+            src: '{,*/}*.css',
+            dest: '.tmp/styles/'
+          }
+        ]
       }
     },
 
@@ -155,34 +136,6 @@ module.exports = function(grunt) {
         exclude: ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js']
       }
     },
-
-    // Compiles CoffeeScript to JavaScript
-    coffee: {
-      options: {
-        sourceMap: true,
-        sourceRoot: ''
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yo.app %>/scripts',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/scripts',
-          ext: '.js'
-        }]
-      },
-      test: {
-        files: [{
-          expand: true,
-          cwd: 'test/spec',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/spec',
-          ext: '.js'
-        }]
-      }
-    },
-
-
 
     // Renames files for browser caching purposes
     rev: {
@@ -232,26 +185,33 @@ module.exports = function(grunt) {
         root: '<%= yo.app %>'
       }
     },
+
     imagemin: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yo.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yo.dist %>/images'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= yo.app %>/images',
+            src: '{,*/}*.{png,jpg,jpeg,gif}',
+            dest: '<%= yo.dist %>/images'
+          }
+        ]
       }
     },
+
     svgmin: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yo.app %>/images',
-          src: '{,*/}*.svg',
-          dest: '<%= yo.dist %>/images'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= yo.app %>/images',
+            src: '{,*/}*.svg',
+            dest: '<%= yo.dist %>/images'
+          }
+        ]
       }
     },
+
     htmlmin: {
       dist: {
         options: {
@@ -260,12 +220,14 @@ module.exports = function(grunt) {
           removeCommentsFromCDATA: true,
           removeOptionalTags: true
         },
-        files: [{
-          expand: true,
-          cwd: '<%= yo.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yo.dist %>'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= yo.dist %>',
+            src: ['*.html', 'views/{,*/}*.html'],
+            dest: '<%= yo.dist %>'
+          }
+        ]
       }
     },
 
@@ -274,12 +236,14 @@ module.exports = function(grunt) {
     // things like resolve or inject so those have to be done manually.
     ngmin: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '.tmp/concat/scripts',
+            src: '*.js',
+            dest: '.tmp/concat/scripts'
+          }
+        ]
       }
     },
 
@@ -293,26 +257,29 @@ module.exports = function(grunt) {
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yo.app %>',
-          dest: '<%= yo.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            '.htaccess',
-            '*.html',
-            'views/{,*/}*.html',
-            'bower_components/**/*',
-            'images/{,*/}*.{webp}',
-            'fonts/*'
-          ]
-        }, {
-          expand: true,
-          cwd: '.tmp/images',
-          dest: '<%= yo.dist %>/images',
-          src: ['generated/*']
-        }]
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: '<%= yo.app %>',
+            dest: '<%= yo.dist %>',
+            src: [
+              '*.{ico,png,txt}',
+              '.htaccess',
+              '*.html',
+              'views/{,*/}*.html',
+              'bower_components/**/*',
+              'images/{,*/}*.{webp}',
+              'fonts/*'
+            ]
+          },
+          {
+            expand: true,
+            cwd: '.tmp/images',
+            dest: '<%= yo.dist %>/images',
+            src: ['generated/*']
+          }
+        ]
       },
       styles: {
         expand: true,
@@ -325,37 +292,20 @@ module.exports = function(grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'coffee:dist',
         'copy:styles'
       ],
       test: [
-        'coffee',
         'copy:styles'
       ],
       dist: [
-        'coffee',
         'copy:styles',
         'imagemin',
         'svgmin'
       ]
-    },
-
-    // Test settings
-    karma: {
-      options: {
-        configFile: 'test/karma.conf.js',
-      },
-      unit: {
-        singleRun: true
-      },
-      server: {
-        autoWatch: true
-      }
     }
   });
 
-
-  grunt.registerTask('serve', function(target) {
+  grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
@@ -370,7 +320,7 @@ module.exports = function(grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function(target) {
+  grunt.registerTask('server', function (target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
@@ -380,7 +330,6 @@ module.exports = function(grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
   ]);
 
   grunt.registerTask('build', [
@@ -392,7 +341,6 @@ module.exports = function(grunt) {
     'concat',
     'ngmin',
     'copy:dist',
-    // 'cdnify',
     'cssmin',
     'uglify',
     'rev',
