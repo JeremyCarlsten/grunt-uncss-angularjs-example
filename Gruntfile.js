@@ -34,7 +34,13 @@ module.exports = function(grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-
+    uncss: {
+      dist: {
+          files: {
+              'dist/css/tidy.css': ['app/index.html']
+          }
+      }
+    },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       // coffee: {
