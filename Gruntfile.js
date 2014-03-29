@@ -26,7 +26,13 @@ module.exports = function (grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-
+    uncss:{
+      dist:{
+        files:{
+          'dist/styles/tidy.css' : ['app/index.html']
+        }
+      }
+    },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       styles: {
@@ -345,7 +351,8 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'uncss'
   ]);
 
   grunt.registerTask('default', [
