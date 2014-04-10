@@ -1,26 +1,28 @@
 'use strict';
 
-angular.module('jeremycarlsten.GruntUncssAngularExample', ['ngAnimate', 'ngRoute', 'mgcrea.ngStrap'])
+angular.module('jeremycarlsten.GruntUncssAngularExample', ['ngAnimate', 'ngRoute', 'mgcrea.ngStrap']);
 
-  .constant('version', 'v0.1.0')
+function TodoCtrl($scope) {
+    $scope.todos = [
+        {text: "Learn AngularJs", done: false},
+        {text: "Build An App", done: false}
+    ];
 
-  .config(function($locationProvider, $routeProvider) {
+    $scope.getTotalTodos = function(){
+       return $scope.todos.length;
+    }
 
-    $locationProvider.html5Mode(false);
+    $scope.addTodo = function () {
+        var formText = $scope.formTodoText;
+        if (formText != undefined && formText.trim() != "") {
+            $scope.todos.push({ text: formText, done: false });
+        }
+        $scope.formTodoText = "";
+    }
 
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/home.html'
-      })
-      .when('/features', {
-        templateUrl: 'views/features.html'
-      })
-      .when('/contact', {
-        templateUrl: 'views/contact.html'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-
-  });
-
+    $scope.clearCompleted = function(){
+        $scope.todos = _.filter($scope.todos, function(todo){
+           return !todo.done;
+        });
+    }
+}

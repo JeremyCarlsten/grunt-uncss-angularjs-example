@@ -27,5 +27,12 @@
     "angular-route": "~1.2.10",
     "angular": "~1.2.10",
     "jquery": "~2.1.0"
-  }
+  },
+  "authors": [
+    "JeremyCarlsten <jcc.993@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT"
 }

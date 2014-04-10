@@ -1,83 +1,31 @@
 <!doctype html>
-<!--[if lt IE 9]> <html class="no-js lt-ie9" lang="en" ng-app=".GruntUncssAngularExample"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" ng-app="jeremycarlsten.GruntUncssAngularExample"> <!--<![endif]-->
+<html ng-app>
 <head>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="scripts/app.js"></script>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>GruntUncssAngularExample - Yet another amazing AngularJS app</title>
-  <meta name="description" content="Yet another amazing AngularJS app">
-
-<!--[if lt IE 9]>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
-<![endif]-->
-
-  <!-- Sets initial viewport load and disables zooming  -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <!-- Set a shorter title for iOS6 devices when saved to home screen -->
-  <meta name="apple-mobile-web-app-title" content="GruntUncssAngularExample">
-
-  <!-- Properties for Google+ snippets -->
-  <meta property="og:title" content="GruntUncssAngularExample">
-  <meta property="og:description" content="Yet another amazing AngularJS app">
-  <meta property="og:image" content="https://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png">
-
-  <!-- Author of this application -->
-  <link rel="author" href="https://github.com/JeremyCarlsten"> 
-  <link rel="icon" href="http://angularjs.org/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="http://angularjs.org/favicon.ico" type="image/x-icon">
-
-  <!-- build:css styles/components.min.css -->
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-  <!-- endbower -->
-  <!-- endbuild -->
-
-  <!-- build:css(.tmp) styles/main.min.css -->
-  <link rel="stylesheet" href="styles/main.css">
-  <!--<link ng-repeat="stylesheet in stylesheets" ng-href="{{stylesheet.href}}" type="{{stylesheet.type}}" rel="stylesheet" />-->
-  <!-- endbuild -->
-
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="styles/reset.css"/>
+    <link rel="stylesheet" href="styles/main.css"/>
 </head>
+<body>
+<main ng-controller="TodoCtrl">
+    <h2> Total: {{getTotalTodos()}}</h2>
 
-<body ontouchstart ng-controller="MainCtrl">
+    <ul class="unstyled">
+        <li ng-repeat="todo in todos">
+            <input type="checkbox" ng-model="todo.done">
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+        </li>
+    </ul>
 
-  <div class="site-wrapper">
-    <div class="site-wrapper-inner">
-      <div class="cover-container">
-        <div class="masthead clearfix">
-          <div class="inner" ng-include="'views/partials/header.html'"></div>
-        </div>
-        <div class="inner cover">
-          <div class="inner" ng-view></div>
-        </div>
-        <div class="mastfoot">
-          <div class="inner" ng-include="'views/partials/footer.html'"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <form class="form-horizontal">
+        <input type="text" ng-model="formTodoText" ng-model-instant/>
+        <button class="btn" ng-click="addTodo()"><span class="glyphicon glyphicon-plus"></span> Add</button>
+    </form>
 
-  <!-- build:js scripts/components.min.js -->
-  <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <!-- endbower -->
-  
-  <!-- endbuild -->
-
-  <!-- build:js scripts/app.min.js -->
-  <script src="scripts/app.js"></script>
-  <script src="scripts/controllers/main.js"></script>
-  <!-- endbuild -->
-
+    <button class="btn" ng-click="clearCompleted()"><span class="glyphicon glyphicon-trash"></span> Clear Completed</button>
+</main>
 </body>
-
-</html>
+</head>
