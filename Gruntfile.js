@@ -9,7 +9,6 @@ module.exports = function (grunt) {
     // Project meta
     pkg: require('./package.json'),
     bower: require('./bower.json'),
-
     meta: {
       banner: '/**\n' +
           ' * <%= pkg.name %>\n' +
@@ -26,10 +25,10 @@ module.exports = function (grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-    uncss:{
-      dist:{
-        files:{
-          'dist/styles/tidy.css' : ['app/index.html']
+    uncss: {
+      dist: {
+        files: {
+          'dist/styles/tidy.css': ['app/index.html']
         }
       }
     },
@@ -308,6 +307,13 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+    uglify: {
+      myTarget: {
+        files: {
+          'dist/scripts/app.min.js': ['app/scripts/app.js', 'app/scripts/controllers/main.js']
+        }
+      }
     }
   });
 
@@ -348,7 +354,7 @@ module.exports = function (grunt) {
     'ngmin',
     'copy:dist',
     'cssmin',
-//    'uglify',
+    'uglify',
     'rev',
     'usemin',
     'htmlmin',

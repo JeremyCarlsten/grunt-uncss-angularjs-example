@@ -44,3 +44,11 @@ where it's wired up in the build task:
   ...
 ```
 
+
+
+
+Note: I needed to run
+```
+git config --global url."https://".insteadOf git://
+```
+in order to fix an error that "bower install" was throwing.
