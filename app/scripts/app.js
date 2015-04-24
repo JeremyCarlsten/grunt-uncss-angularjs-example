@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('jeremycarlsten.GruntUncssAngularExample', ['ngAnimate', 'ngRoute', 'mgcrea.ngStrap']);
+angular.module('GruntUncssAngularExample', ['ngAnimate'])
+        .controller('TodoCtrl', TodoCtrl);
+
+TodoCtrl.$inject = ['$scope'];
 
 function TodoCtrl($scope) {
     $scope.todos = [
