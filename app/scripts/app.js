@@ -1,39 +1,40 @@
-'use strict';
+(function () {
+    'use strict';
 
-angular.module('GruntUncssAngularExample', ['ngAnimate'])
-        .controller('TodoCtrl', TodoCtrl);
+    angular.module('GruntUncssAngularExample', ['ngAnimate'])
+            .controller('TodoCtrl', TodoCtrl);
 
-TodoCtrl.$inject = ['$scope'];
+    function TodoCtrl() {
+        var vm = this;
+        vm.todos = [
+            {text: "Find Humanz", done: false},
+            {text: "Eat Brainz", done: false}
+        ];
 
-function TodoCtrl($scope) {
-    $scope.todos = [
-        {text: "Find Humanz", done: false},
-        {text: "Eat Brainz", done: false}
-    ];
+        vm.getTotalTodos = function () {
+            return vm.todos.length;
+        };
 
-    $scope.getTotalTodos = function(){
-       return $scope.todos.length;
-    };
+        vm.hasTasksLeft = function () {
+            return vm.getTotalTodos() > 0;
+        };
 
-    $scope.hasTasksLeft = function(){
-       return $scope.getTotalTodos() > 0;
-    };
+        vm.addTodo = function () {
+            var formText = vm.formTodoText;
+            if (formText != undefined && formText.trim() != "") {
+                vm.todos.push({text: formText, done: false});
+            }
+            vm.formTodoText = "";
+        };
 
-    $scope.addTodo = function () {
-        var formText = $scope.formTodoText;
-        if (formText != undefined && formText.trim() != "") {
-            $scope.todos.push({ text: formText, done: false });
-        }
-        $scope.formTodoText = "";
-    };
+        vm.removeTodo = function (index) {
+            vm.todos.splice(index, 1);
+        };
 
-    $scope.removeTodo = function(index){
-        $scope.todos.splice(index, 1);
-    };
-
-    $scope.clearCompleted = function(){
-        $scope.todos = _.filter($scope.todos, function(todo){
-           return !todo.done;
-        });
-    };
-}
+        vm.clearCompleted = function () {
+            vm.todos = _.filter(vm.todos, function (todo) {
+                return !todo.done;
+            });
+        };
+    }
+})();

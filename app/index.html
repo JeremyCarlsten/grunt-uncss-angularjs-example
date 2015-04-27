@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles/main.css"/>
 </head>
 <body>
-<main ng-controller="TodoCtrl" class="clearfix">
+<main ng-controller="TodoCtrl as todo" class="clearfix">
     <aside>
         <section>
             <img src="images/FinalZombie.gif" alt="Oh no the zombie escaped!" title="Courtesy of: http://design.tutsplus.com/tutorials/how-to-create-a-stinking-zombie-flesh-eater-in-illustrator--vector-2246"/>
@@ -26,22 +26,22 @@
     <header class="form-header clearfix">
         <h1 class="header">Stuff to get DONE.</h1>
 
-        <h2 class="total"> Total: <span class="standout-{{hasTasksLeft()}}">{{getTotalTodos()}}</span></h2>
+        <h2 class="total"> Total: <span class="standout-{{todo.hasTasksLeft()}}">{{todo.getTotalTodos()}}</span></h2>
     </header>
     <ul class="unstyled tasks">
-        <li ng-repeat="todo in todos" class="task">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}} ">{{todo.text}}</span>
-            <span class="glyphicon glyphicon-remove remove-task" ng-click="removeTodo($index)"></span>
+        <li ng-repeat="task in todo.todos" class="task">
+            <input type="checkbox" ng-model="task.done">
+            <span class="done-{{task.done}} ">{{task.text}}</span>
+            <span class="glyphicon glyphicon-remove remove-task" ng-click="todo.removeTodo($index)"></span>
         </li>
     </ul>
 
     <form class="form-horizontal">
-        <input type="text" ng-model="formTodoText" placeholder="Get more Brainz?!?" ng-model-instant/>
-        <button class="btn orangeBtn" ng-click="addTodo()"><span class="glyphicon glyphicon-plus"></span> Add
+        <input type="text" ng-model="todo.formTodoText" placeholder="Get more Brainz?!?" ng-model-instant/>
+        <button class="btn orangeBtn" ng-click="todo.addTodo()"><span class="glyphicon glyphicon-plus"></span> Add
         </button>
     </form>
-    <button class="btn clearComplete" ng-click="clearCompleted()"><span class="glyphicon glyphicon-trash"></span>
+    <button class="btn clearComplete" ng-click="todo.clearCompleted()"><span class="glyphicon glyphicon-trash"></span>
         Clear Completed
     </button>
 </main>
