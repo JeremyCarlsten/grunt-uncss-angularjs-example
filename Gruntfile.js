@@ -18,13 +18,14 @@ module.exports = function (grunt) {
           ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
           ' */\n'
     },
-
     // Project settings
     yo: {
       // Configurable paths
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
+
+    //Basic setup of UnCSS
     uncss: {
       dist: {
         files: {
@@ -32,6 +33,28 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    //Basic setup for multiple pages of UnCSS
+    //uncss: {
+    //  dist: {
+    //    files: {
+    //      'dist/styles/tidy.css': ['app/index.html', 'app/anotherpage.html']
+    //    }
+    //  }
+    //},
+
+    //Basic setup for multiple pages of UnCSS, and ignoring certain files
+    //uncss: {
+    //  dist: {
+    //    options: {
+    //      ignore: ['app/DontIncludeme.html']
+    //    }
+    //    files: {
+    //      'dist/styles/tidy.css': ['app/index.html', 'app/anotherpage.html']
+    //    }
+    //  }
+    //},
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       styles: {
@@ -54,7 +77,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     // The actual grunt server settings
     connect: {
       options: {
@@ -88,7 +110,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -98,7 +119,6 @@ module.exports = function (grunt) {
         'Gruntfile.js'
       ]
     },
-
     // Empties folders to start fresh
     clean: {
       dist: {
@@ -115,7 +135,6 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
-
     // Add vendor prefixed styles
     autoprefixer: {
       options: {
@@ -132,7 +151,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     // Automatically inject Bower components into the app
     'bowerInstall': {
       app: {
@@ -141,7 +159,6 @@ module.exports = function (grunt) {
         exclude: ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js']
       }
     },
-
     // Renames files for browser caching purposes
     rev: {
       dist: {
@@ -155,7 +172,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -174,7 +190,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       html: ['<%= yo.dist %>/{,*/}*.html'],
@@ -183,14 +198,12 @@ module.exports = function (grunt) {
         assetsDirs: ['<%= yo.dist %>']
       }
     },
-
     // The following *-min tasks produce minified files in the dist folder
     cssmin: {
       options: {
         root: '<%= yo.app %>'
       }
     },
-
     imagemin: {
       dist: {
         files: [
@@ -203,7 +216,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     svgmin: {
       dist: {
         files: [
@@ -216,7 +228,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     htmlmin: {
       dist: {
         options: {
@@ -235,7 +246,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     // ngmin tries to make the code safe for minification automatically by
     // using the Angular long form for dependency injection. It doesn't work on
     // things like resolve or inject so those have to be done manually.
@@ -251,14 +261,12 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     // Replace Google CDN references
     cdnify: {
       dist: {
         html: ['<%= yo.dist %>/*.html']
       }
     },
-
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -293,7 +301,6 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },
-
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
@@ -341,7 +348,7 @@ module.exports = function (grunt) {
     'clean:server',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
+    'connect:test'
   ]);
 
   grunt.registerTask('build', [
@@ -350,7 +357,6 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-//    'concat',
     'ngmin',
     'copy:dist',
     'cssmin',
