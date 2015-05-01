@@ -1,3 +1,5 @@
+/*** uncss> filename: app/assets/bower_components/bootstrap/dist/css/bootstrap.css ***/
+
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -270,36 +272,6 @@ input[type="checkbox"]:focus {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 
-@-webkit-keyframes progress-bar-stripes {
-  from {
-    background-position: 40px 0;
-  }
-
-  to {
-    background-position: 0 0;
-  }
-}
-
-@-o-keyframes progress-bar-stripes {
-  from {
-    background-position: 40px 0;
-  }
-
-  to {
-    background-position: 0 0;
-  }
-}
-
-@keyframes progress-bar-stripes {
-  from {
-    background-position: 40px 0;
-  }
-
-  to {
-    background-position: 0 0;
-  }
-}
-
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -315,6 +287,8 @@ input[type="checkbox"]:focus {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
+
+/*** uncss> filename: app/assets/styles/reset.css ***/
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -359,6 +333,8 @@ body {
 ul {
   list-style: none;
 }
+
+/*** uncss> filename: app/assets/styles/main.css ***/
 
 * {
   margin: 0;
