@@ -16,6 +16,9 @@
     "type": "git",
     "url": "https://github.com/JeremyCarlsten/grunt-uncss-angular-example.git"
   },
+  "scripts": {
+    "test": "grunt test"
+  },
   "licenses": [
     {
       "type": "MIT"
