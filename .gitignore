@@ -2,5 +2,6 @@
 bower_components/
 node_modules/
 tmp/
+_SpecRunner.html
 *.idea/
 *.iml

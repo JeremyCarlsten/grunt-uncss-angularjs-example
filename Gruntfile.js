@@ -11,12 +11,12 @@ module.exports = function (grunt) {
     bower: require('./bower.json'),
     meta: {
       banner: '/**\n' +
-          ' * <%= pkg.name %>\n' +
-          ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-          ' * @link <%= pkg.homepage %>\n' +
-          ' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
-          ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
-          ' */\n'
+              ' * <%= pkg.name %>\n' +
+              ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+              ' * @link <%= pkg.homepage %>\n' +
+              ' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
+              ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
+              ' */\n'
     },
     // Project settings
     yo: {
@@ -90,16 +90,6 @@ module.exports = function (grunt) {
           open: true,
           base: [
             '.tmp',
-            '<%= yo.app %>'
-          ]
-        }
-      },
-      test: {
-        options: {
-          port: 9001,
-          base: [
-            '.tmp',
-            'test',
             '<%= yo.app %>'
           ]
         }
@@ -321,6 +311,23 @@ module.exports = function (grunt) {
           'dist/scripts/app.min.js': ['app/scripts/app.js', 'app/scripts/controllers/main.js']
         }
       }
+    },
+    jasmine: {
+      pivotal: {
+        src: 'app/app.js',
+        options: {
+          vendor: [
+            'app/assets/bower_components/angular/angular.min.js',
+            'app/assets/bower_components/angular-mocks/angular-mocks.js',
+            'app/assets/bower_components/jquery/dist/jquery.min.js',
+            'app/assets/bower_components/angular-animate/angular-animate.min.js',
+            'app/assets/bower_components/bootstrap/dist/js/bootstrap.min.js',
+            'app/assets/bower_components/underscore/underscore-min.js'
+          ],
+          keepRunner: true,
+          specs: 'test/functional/*Spec.js'
+        }
+      }
     }
   });
 
@@ -348,7 +355,7 @@ module.exports = function (grunt) {
     'clean:server',
     'concurrent:test',
     'autoprefixer',
-    'connect:test'
+    'jasmine'
   ]);
 
   grunt.registerTask('build', [

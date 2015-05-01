@@ -1,6 +1,5 @@
 (function () {
     'use strict';
-
     angular.module('GruntUncssAngularExample', ['ngAnimate'])
             .controller('TodoCtrl', TodoCtrl);
 

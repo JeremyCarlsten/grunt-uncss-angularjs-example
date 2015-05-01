@@ -34,6 +34,8 @@
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-cssmin": "~0.8.0",
     "grunt-contrib-htmlmin": "~0.2.0",
+    "grunt-contrib-imagemin": "^0.6.0",
+    "grunt-contrib-jasmine": "^0.8.2",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "~0.5.3",
@@ -41,11 +43,10 @@
     "grunt-nginclude": "~0.3.1",
     "grunt-ngmin": "0.0.3",
     "grunt-rev": "~0.1.0",
+    "grunt-svgmin": "^0.4.0",
+    "grunt-uncss": "^0.3.2",
     "grunt-usemin": "~2.0.2",
     "jshint-stylish": "~0.1.5",
-    "load-grunt-tasks": "~0.4.0",
-    "grunt-uncss": "^0.3.2",
-    "grunt-svgmin": "^0.4.0",
-    "grunt-contrib-imagemin": "^0.6.0"
+    "load-grunt-tasks": "~3.1.0"
   }
 }
