@@ -24,9 +24,6 @@
       "type": "MIT"
     }
   ],
-  "dependencies": {
-    "david": "^6.1.6"
-  },
   "devDependencies": {
     "david": "^6.2.0",
     "grunt": "~0.4.2",
